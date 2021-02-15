@@ -12,8 +12,8 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Bienvenue chez EventBrite(bis) !")
   end
 
-  def attendance_notif_email(event)
-    @event = event
+  def attendance_notif_email(attendance)
+    @event = attendance.event
     @host = @event.host
 
     mail(to: @host.email, subject: "Il y a un nouveau participant à votre évènement #{@event.title}")
