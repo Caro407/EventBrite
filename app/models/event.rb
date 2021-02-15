@@ -28,7 +28,7 @@ class Event < ApplicationRecord
     presence: true
 
   def is_passed?
-    errors.add(:base, "Start date can't be set in the past.") unless start_date < DateTime.now
+    errors.add(:base, "Start date can't be set in the past.") if start_date < DateTime.now
   end
 
   def is_multiple_of_5?
