@@ -1,0 +1,22 @@
+<h1>
+  <%= @event.title %>
+</h1>
+
+<p>Où ?
+  <%= @event.location %></p>
+<p>
+  Quand ?
+  <%= @event.start_date %></p>
+<p>
+  Combien de temps ?
+  <%= @event.duration %> minutes</p>
+<p>
+  Nombre de participants ?
+  <%= @attendance.count %></p>
+
+<ul>
+  <% @attendance.order(:created_at).each do |attendee| %>
+  <li>
+    <%= attendee.user.first_name + " " + attendee.user.last_name %></li>
+<% end %>
+</ul>
