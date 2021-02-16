@@ -14,4 +14,9 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_now
   end
+
+  def full_name
+    full_name = self.first_name + " " + self.last_name
+    return full_name
+  end
 end

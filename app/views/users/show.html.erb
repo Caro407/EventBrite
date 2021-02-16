@@ -1,0 +1,7 @@
+<h1>Profil de <%= @user.full_name %> </h1>
+
+<p>Prénom : <%= @user.first_name %></p>
+<p>Nom : <%= @user.last_name %></p>
+<p>Description : <%= @user.description %></p>
+<p>Adresse email : <%= @user.email %></p>
+<p><%= link_to "Modifier mon adresse email ou mon mot de passe", edit_user_registration_path%></p>

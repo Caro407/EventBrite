@@ -2,21 +2,36 @@
   <%= @event.title %>
 </h1>
 
+<p>
+  <%= @event.description %>
+</p>
+
 <p>Où ?
   <%= @event.location %></p>
 <p>
   Quand ?
-  <%= @event.start_date %></p>
+  <%= I18n.l(@event.start_date, format: :long) %></p>
 <p>
   Combien de temps ?
-  <%= @event.duration %> minutes</p>
+  <%= @event.duration %>
+  minutes</p>
+<p>
+  Combien ça coûte ?
+  <%= @event.price %>€</p>
+
+<p>
+  Contacter l'organisateur :
+  <%= @event.host.email %></p>
+
+<hr>
+
 <p>
   Nombre de participants ?
   <%= @attendance.count %></p>
 
 <ul>
   <% @attendance.order(:created_at).each do |attendee| %>
-  <li>
-    <%= attendee.user.first_name + " " + attendee.user.last_name %></li>
-<% end %>
+    <li>
+      <%= attendee.user.first_name + " " + attendee.user.last_name %></li>
+  <% end %>
 </ul>
