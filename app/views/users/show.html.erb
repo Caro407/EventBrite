@@ -1,7 +1,44 @@
-<h1>Profil de <%= @user.full_name %> </h1>
+<div class="container">
 
-<p>Prénom : <%= @user.first_name %></p>
-<p>Nom : <%= @user.last_name %></p>
-<p>Description : <%= @user.description %></p>
-<p>Adresse email : <%= @user.email %></p>
-<p><%= link_to "Modifier mon adresse email ou mon mot de passe", edit_user_registration_path%></p>
+  <h1 class="my-4">Profil de
+    <%= @user.full_name %>
+  </h1>
+
+  <div class="d-flex justify-content-center">
+    <div class="card">
+      <div class="card-body row">
+
+
+    <p class="col-6 font-weight-bold">Prénom :</p>
+    <p class="col-6">
+      <%= @user.first_name %>
+    </p>
+
+    <p class="col-6 font-weight-bold">Nom :</p>
+    <p class="col-6">
+      <%= @user.last_name %>
+    </p>
+
+    <p class="col-6 font-weight-bold">Description :</p>
+    <p class="col-6">
+      <%= @user.description %>
+    </p>
+
+    <p class="col-6 font-weight-bold">Adresse email :</p>
+    <p class="col-6">
+      <%= mail_to @user.email %>
+    </p>
+
+    <div class="offset-1 col-10">
+      <p>
+        <%= link_to "Modifier mon adresse email ou mon mot de passe", edit_user_registration_path, class: "btn btn-light w-100"%>
+      </p>
+
+      <p>
+        <%= link_to "Modifier mes informations personnelles", edit_user_path, class: "btn btn-info w-100"%>
+      </p>
+    </div>
+  </div>
+</div>
+  </div>
+</div>

@@ -34,4 +34,8 @@ class Event < ApplicationRecord
   def is_multiple_of_5?
     errors.add(:base, "Duration has to be a multiple of 5.") unless duration % 5 == 0
   end
+
+  def define_end_date
+    end_date = start_date + duration.minutes
+  end
 end

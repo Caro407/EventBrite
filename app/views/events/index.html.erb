@@ -1,19 +1,20 @@
-<div class="jumbotron">
+<div class="jumbotron text-right">
   <h1 class="display-4">Index des évènements</h1>
-  <p class="lead">Bienvenue sur notre site d'organisation d'évènements locaux.</p>
+  <p class="lead font-weight-bold">Bienvenue sur notre site d'organisation d'évènements locaux.</p>
   <hr class="my-4">
-  <p>Tu veux créer ton propre évènement ?</p>
+  <p class="font-weight-bold">Tu veux créer ton propre évènement ?</p>
   <p class="lead">
 
-    <%= link_to "C'est par ici !", new_event_path, class: "btn btn-primary btn-lg", role: "button"%>
+    <%= link_to "C'est par ici !", new_event_path, class: "btn btn-info btn-lg", role: "button"%>
   </p>
 </div>
 
-  <div class="countainer">
-    <p>Texte pour expliquer un peu le but du site. Présenter la liste qui va suivre.</p>
+  <div class="container">
+    <p class="lead">Ce site a pour but de permettre l'organisation d'évènements près de chez vous et de rassembler des personnes ayant des intérêts communs.
+       Vous trouverez ci-dessous la liste des évènements déjà créés :</p>
     <div class="list-group">
       <% Event.order(:created_at).each do |event| %>
         <%= link_to "#{event.title}", event_path(event.id), class: "list-group-item list-group-item-action" %>
       <% end %>
-      </div>
     </div>
+  </div>

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
   end
 
@@ -9,10 +11,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    #@locations = []
-    #Event.all do |event|
-    #  @locations = event.location
-    #end
   end
 
   def create_params
@@ -20,8 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    pp params
-
     host = helpers.current_user
 
     @event = Event.new(title: create_params[:title],

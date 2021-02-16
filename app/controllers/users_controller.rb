@@ -6,6 +6,30 @@ class UsersController < ApplicationController
     @user = helpers.current_user
   end
 
+  def edit
+    @user = helpers.current_user
+  end
+
+  def update_params
+    params.permit(:first_name, :last_name, :description)
+  end
+
+  def update
+    @user = helpers.current_user
+
+    @user.first_name = update_params[:first_name]
+    @user.last_name = update_params[:last_name]
+    @user.description = update_params[:description]
+
+    if @user.save
+      redirect_to user_path(@user.id)
+      flash[:success] = "Les informations ont été correctement mises à jour."
+    else
+      flash[:danger] = "Echec : " + @user.errors.full_messages.join(" ")
+      render :edit
+    end
+  end
+
   private
 
   def is_user_connected

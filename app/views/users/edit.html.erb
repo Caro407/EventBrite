@@ -1,0 +1,22 @@
+<div class="form-group container">
+  <%= form_tag user_path(@user.id), method: "patch" do %>
+
+  <%= label_tag 'Prénom' %>
+  <%= text_field_tag 'first_name', @user.first_name, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= label_tag 'Nom' %>
+  <%= text_field_tag 'last_name', @user.last_name, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= label_tag 'Description' %>
+  <%= text_area_tag 'description', @user.description, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= submit_tag "Modifier les informations", class: "form-control btn btn-primary" %>
+
+  <% end %>
+</div>
