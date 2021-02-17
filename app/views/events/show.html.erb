@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex flex-row justify-content-center align-items-center">
 
     <div class="card rounded">
       <div class="card-body">
@@ -31,13 +31,15 @@
         <p>
           Tarif :
           <span class="badge badge-info"><%= @event.price %>€</span>
-          </p>
+        </p>
         <p>
           Contacter l'organisateur :
           <%= mail_to @event.host.email %></p>
-          <p class="col-12">
-
-            <%= link_to '<< Back', :back , class: 'card-link btn btn-info w-100' %>
+        <p class="col-12">
+          <%= link_to "S'inscrire à l'évènement", new_attendance_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
+        </p>
+        <p class="col-12">
+          <%= link_to '<< Retour', :back , class: 'card-link btn btn-secondary w-100' %>
         </p>
       </div>
     </div>

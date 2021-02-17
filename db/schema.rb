@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_095814) do
+ActiveRecord::Schema.define(version: 2021_02_17_152012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_095814) do
     t.string "stripe_customer_id", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payment_status", default: "pending", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end

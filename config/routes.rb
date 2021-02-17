@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :charges
 
+  resources :attendances
+
   root "events#index"
 end

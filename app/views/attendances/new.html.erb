@@ -1,0 +1,27 @@
+<div class="form-group container">
+  <h1>S'inscrire à l'évènement</h1>
+  <%= form_tag attendances_path, method: "post" do %>
+
+  <%= label_tag 'Prénom' %>
+  <%= text_field_tag 'first_name', @attendee.first_name, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= label_tag 'Nom' %>
+  <%= text_area_tag 'last_name', @attendee.last_name, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= label_tag 'Email de contact' %>
+  <%= text_field_tag 'email', @attendee.email, class: "form-control" %>
+  <br/>
+  <br/>
+
+  <%= hidden_field_tag 'event_id', "#{@event.id}"  %>
+  <br/>
+  <br/>
+
+  <%= submit_tag "Passer au paiement de #{@event.price}€", class: "form-control btn btn-info" %>
+
+  <% end %>
+</div>
