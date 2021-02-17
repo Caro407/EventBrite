@@ -1,7 +1,9 @@
 class AttendancesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_event_available?
+  before_action :is_user_admin?, only: [:new, :create]
+
   def new
-    #prévoir la vérification de connexion et d'appartenance de l'event
-    #prévoir le cas où l'event n'exsite pas encore
     @event = Event.find(params[:event_id])
     @attendee = User.find(helpers.current_user.id)
     @attendance = Attendance.new(event: @event, user: @attendee)
@@ -29,6 +31,22 @@ class AttendancesController < ApplicationController
       #On render + flash
       flash[:danger] = "Echec :" + @attendance.errors.full_messages.join(" ")
       render :new
+    end
+  end
+
+  private
+
+  def is_user_admin?
+    if Event.find(params[:event_id]).host == helpers.current_user
+      redirect_to root_path
+      flash[:warning] = "Vous ne pouvez pas vous inscrire à votre propre évènement."
+    end
+  end
+
+  def is_event_available?
+    if Event.find(params[:event_id]) == nil
+      redirect_to root_path
+      flash[:warning] = "L'évènement que vous recherchez n'existe pas."
     end
   end
 end

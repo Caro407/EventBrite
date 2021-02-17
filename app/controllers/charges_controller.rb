@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  #ajouter une callback pour que si l'event existe pas, ça fonctionne pas
   def new
     @event = Event.find(params[:event_id])
   end
