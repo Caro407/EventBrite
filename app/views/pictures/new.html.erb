@@ -1,0 +1,4 @@
+<%= form_tag event_pictures_path(params[:event_id]), method: "post", multipart: true do %>
+  <%= file_field_tag :picture %>
+  <%= submit_tag "Ajouter une photo de profil" %>
+<% end %>

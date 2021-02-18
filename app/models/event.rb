@@ -4,6 +4,8 @@ class Event < ApplicationRecord
 
   belongs_to :host, class_name: "User"
 
+  has_one_attached :picture
+
   validates :start_date, presence: true
   validate :is_passed?
 
