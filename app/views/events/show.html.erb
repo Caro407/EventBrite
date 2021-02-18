@@ -1,13 +1,11 @@
 <div class="container">
   <div class="d-flex flex-row justify-content-center align-items-center">
 
-    <%if @event.picture.attached?%>
-      <%= image_tag @event.picture, alt: 'avatar' %>
-    <%else%>
-      <p> Cet évènement n'a pas encore d'image.</p>
-    <%end%>
 
     <div class="card rounded">
+      <%if @event.picture.attached?%>
+        <%= image_tag @event.picture, alt: 'avatar', class: "card-img-top" %>
+      <%end%>
       <div class="card-body">
         <h5 class="card-title"><%= @event.title %></h5>
         <h6 class="card-subtitle mb-2 text-muted">
@@ -41,12 +39,19 @@
         <p>
           Contacter l'organisateur :
           <%= mail_to @event.host.email %></p>
-        <p class="col-12">
-          <%= link_to "S'inscrire à l'évènement", new_attendance_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
-        </p>
-        <p class="col-12">
-          <%= link_to "Ajouter une photo de profil à l'évènement", new_event_picture_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
-        </p>
+
+        <% if current_user == @event.host %>
+          <p class="col-12">
+            <%= link_to "Ajouter une photo de profil à l'évènement", new_event_picture_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
+          </p>
+          <p class="col-12">
+            <%= link_to "Modifier l'évènement", edit_event_path(params[:id]) , class: 'card-link btn btn-info w-100' %>
+          </p>
+        <% else %>
+          <p class="col-12">
+            <%= link_to "S'inscrire à l'évènement", new_attendance_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
+          </p>
+        <% end %>
         <p class="col-12">
           <%= link_to '<< Retour', :back , class: 'card-link btn btn-secondary w-100' %>
         </p>
