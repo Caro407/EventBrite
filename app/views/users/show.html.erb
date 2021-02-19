@@ -28,7 +28,9 @@
     <p class="col-6">
       <%= mail_to @user.email %>
     </p>
-
+    <% @user.hosted_events do |event| %>
+    <p><%= event.title %></p>
+    <% end %>
     <div class="offset-1 col-10">
       <p>
         <%= link_to "Modifier mon adresse email ou mon mot de passe", edit_user_registration_path, class: "btn btn-light w-100"%>

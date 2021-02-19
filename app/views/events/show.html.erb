@@ -21,7 +21,7 @@
             <%= @attendance.count %>
           </span>
         </p>
-
+        <% if current_user == @event.host %>
         <details closed="closed" class="my-2">
           <summary>Voir la liste des participants</summary>
           <ul class="list-group">
@@ -31,6 +31,7 @@
             <% end %>
           </ul>
         </details>
+        <% end %>
 
         <p>
           Tarif :
