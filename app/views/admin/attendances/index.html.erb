@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Event ID</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Created at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each_with_index do |attendance, index| %>
+        <tr>
+          <th scope="row"><%= index + 1%></th>
+          <td><%= attendance.id %></td>
+          <td><%= link_to attendance.event_id, admin_event_path(attendance.event_id) %></td>
+          <td><%= link_to attendance.user_id, admin_user_path(attendance.user_id) %></td>
+          <td><%= attendance.created_at %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
