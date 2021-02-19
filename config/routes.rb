@@ -13,5 +13,9 @@ Rails.application.routes.draw do
 
   resources :attendances
 
+  namespace :admin do
+    resources :users, :events, :attendances
+  end
+
   root "events#index"
 end
