@@ -6,6 +6,11 @@
 
   <div class="d-flex justify-content-center">
     <div class="card">
+      <%if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, alt: 'avatar', class: "card-img-top" %>
+        <%else%>
+        <%= image_tag "profile-pic-missing-default.jpg", alt: 'avatar', class: "card-img-top" %>
+      <%end%>
       <div class="card-body row">
 
 
@@ -38,6 +43,9 @@
 
       <p>
         <%= link_to "Modifier mes informations personnelles", edit_user_path, class: "btn btn-info w-100"%>
+      </p>
+      <p>
+        <%= link_to "Modifier ma photo de profil", new_user_avatar_path(@user.id), class: "btn btn-info w-100"%>
       </p>
     </div>
   </div>

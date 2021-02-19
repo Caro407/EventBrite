@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :attendances
   has_many :events, through: :attendances
 
+  has_one_attached :avatar
+
   after_create :send_welcome_email, if: -> { Rails.env.production? }
 
   def send_welcome_email

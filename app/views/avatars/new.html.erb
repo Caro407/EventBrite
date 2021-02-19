@@ -1,0 +1,8 @@
+<h3>Changer d'avatar ?</h3>
+<br>
+<%= form_tag user_avatars_path(@user.id), multipart: true do %>
+<br>
+<%= file_field_tag :avatar, class: "form-control" %>
+<br>
+<%= submit_tag "Mettre à jour", class: "form-control btn btn-info" %>
+<% end %>

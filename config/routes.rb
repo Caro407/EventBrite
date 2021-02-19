@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :pictures, only: [:new, :create]
   end
 
-  resources :users
+  resources :users do
+    resources :avatars, only: [:new, :create]
+  end
 
   resources :charges
 
