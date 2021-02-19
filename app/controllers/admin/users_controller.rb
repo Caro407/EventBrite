@@ -1,5 +1,5 @@
 module Admin
-  class Admin::UsersController < AdminController
+  class UsersController < AdminController
     def index
       @users = User.order(created_at: :desc)
     end

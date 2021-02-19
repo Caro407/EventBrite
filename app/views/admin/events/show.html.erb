@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Event
+        <%= @event.id %></h5>
+      <p class="card-text">Title:
+        <%= @event.title %></p>
+      <p class="card-text">Description:
+        <%= @event.description %></p>
+      <p class="card-text">Host ID:
+        <%= link_to @event.host.id, admin_user_path(@event.host.id) %></p>
+      <p class="card-text">Created at:
+        <%= @event.created_at %></p>
+      <p class="card-text">Updated at:
+        <%= @event.updated_at %></p>
+      <p class="card-text">Start Date:
+        <%= @event.start_date %></p>
+      <p class="card-text">Duration:
+        <%= @event.duration %> minutes</p>
+      <p class="card-text">Location:
+        <%= @event.location %></p>
+      <p class="card-text">Price / attendee:
+        <%= @event.price %>€</p>
+      <hr>
+      <h5 class="card-title">Event Attendees :
+        <%= @event.attendances.count %></h5>
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Attendance ID</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Payment Status</th>
+            <th scope="col">Updated at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @event.attendances.each_with_index do |attendance, index|%>
+            <tr>
+              <th scope="row"><%= index + 1%></th>
+              <td><%= attendance.id %></td>
+              <td><%= link_to attendance.user_id, admin_user_path(attendance.user_id) %></td>
+              <td><%= attendance.created_at %></td>
+              <td><%= attendance.payment_status %></td>
+              <td><%= attendance.updated_at %></td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
