@@ -1,8 +1,10 @@
 class Admin::AdminController < ApplicationController
+  layout "admin"
   before_action :is_admin?
 
   def index
     @admin = helpers.current_user
+    @events_to_validate = Event.where(status: "to validate")
   end
 
   def is_admin?

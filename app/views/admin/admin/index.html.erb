@@ -1,5 +1,33 @@
-<h1>Bienvenue <%= @admin.first_name %></h1>
-
-<%= link_to "Events", admin_events_path %>
-<%= link_to "Users", admin_users_path %>
-<%= link_to "Attendances", admin_attendances_path %>
+<div class="container">
+  <h5><%= @events_to_validate.count %> évènements à valider :</h5>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Location</th>
+        <th scope="col">Host ID</th>
+        <th scope="col">Nb of attendees</th>
+        <th scope="col">Status</th>
+        <th scope="col">Created at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events_to_validate.each_with_index do |event, index| %>
+        <tr>
+          <th scope="row"><%= index + 1%></th>
+          <td><%= link_to event.id, admin_event_path(event.id) %></td>
+          <td><%= event.start_date %></td>
+          <td><%= event.duration %></td>
+          <td><%= event.location %></td>
+          <td><%= link_to event.host.id, admin_user_path(event.host.id) %></td>
+          <td><%= event.attendances.count %></td>
+          <td><%= event.status %></td>
+          <td><%= event.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

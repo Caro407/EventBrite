@@ -42,16 +42,22 @@
           <%= mail_to @event.host.email %></p>
 
         <% if current_user == @event.host %>
+          <% if @event.status == "to validate" %>
+            <p>Votre évènement n'a pas encore été validé par notre plateforme.</p>
+          <% elsif @event.status == "validated" %>
           <p class="col-12">
             <%= link_to "Ajouter une photo de profil à l'évènement", new_event_picture_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
           </p>
           <p class="col-12">
             <%= link_to "Modifier l'évènement", edit_event_path(params[:id]) , class: 'card-link btn btn-info w-100' %>
           </p>
+          <% end %>
         <% else %>
+          <% if @event.status == "validated" %>
           <p class="col-12">
             <%= link_to "S'inscrire à l'évènement", new_attendance_path(event_id: @event.id) , class: 'card-link btn btn-info w-100' %>
           </p>
+          <% end %>
         <% end %>
         <p class="col-12">
           <%= link_to '<< Retour', :back , class: 'card-link btn btn-secondary w-100' %>

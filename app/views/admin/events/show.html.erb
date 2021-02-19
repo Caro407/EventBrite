@@ -7,6 +7,8 @@
         <%= @event.title %></p>
       <p class="card-text">Description:
         <%= @event.description %></p>
+      <p class="card-text">Status:
+        <%= @event.status %></p>
       <p class="card-text">Host ID:
         <%= link_to @event.host.id, admin_user_path(@event.host.id) %></p>
       <p class="card-text">Created at:
@@ -16,11 +18,17 @@
       <p class="card-text">Start Date:
         <%= @event.start_date %></p>
       <p class="card-text">Duration:
-        <%= @event.duration %> minutes</p>
+        <%= @event.duration %>
+        minutes</p>
       <p class="card-text">Location:
         <%= @event.location %></p>
       <p class="card-text">Price / attendee:
         <%= @event.price %>€</p>
+        <% if @event.status == "to validate"%>
+      <p class="col-12">
+        <%= link_to "Valider l'évènement", admin_event_path(@event.id), "data-method": "patch", class: 'card-link btn btn-info w-100' %>
+      </p>
+      <% end %>
       <hr>
       <h5 class="card-title">Event Attendees :
         <%= @event.attendances.count %></h5>

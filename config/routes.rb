@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, :events, :attendances
-    root to: "admin#index"
+    get "/", to: "admin#index", as: :root
   end
 
   root "events#index"

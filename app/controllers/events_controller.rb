@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :is_user_admin?, only: [:edit, :update]
 
   def index
+    @events = Event.where(status: "validated")
   end
 
   def show

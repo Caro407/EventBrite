@@ -44,9 +44,9 @@ class AttendancesController < ApplicationController
   end
 
   def is_event_available?
-    if Event.find(params[:event_id]) == nil
-      redirect_to root_path
-      flash[:warning] = "L'évènement que vous recherchez n'existe pas."
+    if Event.find(params[:event_id]).status != "validated"
+      redirect_to event_path(params[:event_id])
+      flash[:warning] = "Il n'est pas possible de rejoindre cet évènement."
     end
   end
 end
