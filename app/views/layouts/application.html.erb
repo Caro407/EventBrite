@@ -11,55 +11,8 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to "Accueil", root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <%= link_to 'Créer un évènement', new_event_path, class: 'nav-link' %>
-          </li>
-
-          <% if user_signed_in? %>
-
-            <li class="nav-item">
-              <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Mon profil
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <%= link_to "Mon profil", user_path(current_user.id), class: "dropdown-item" %>
-                  <%= link_to "Se déconnecter", destroy_user_session_path, "data-method": :delete, class: "dropdown-item" %>
-                </div>
-              </li>
-
-            <% else %>
-
-              <li class="nav-item">
-                <div class="nav-item dropdown">
-
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    S'inscrire / Se connecter
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
-                    <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
-                  </div>
-                </div>
-              </li>
-
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-
-      <% flash.each do |type, message|%>
-        <div class="alert alert-<%= type %>" role="alert">
-          <%= message %>
-        </div>
-      <% end %>
+    <%= render "layouts/navbar" %>
+    <%= render "layouts/flash" %>
 
       <%= yield %>
     </body>
