@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <script src="https://kit.fontawesome.com/def3ace6b2.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -15,5 +17,7 @@
     <%= render "layouts/flash" %>
 
       <%= yield %>
+
+    <%= render "layouts/footer" %>
     </body>
   </html>

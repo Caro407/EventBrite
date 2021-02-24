@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include EventsHelper
+
   before_action :authenticate_user!, only: [:new, :create]
   before_action :is_user_admin?, only: [:edit, :update]
 

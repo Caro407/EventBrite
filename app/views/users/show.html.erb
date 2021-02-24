@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-center">
     <div class="card">
       <%if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, alt: 'avatar', class: "card-img-top" %>
+        <%= image_tag @user.avatar, alt: 'avatar', class: "card-img-top", style: "max-width: 500px" %>
         <%else%>
         <%= image_tag "profile-pic-missing-default.jpg", alt: 'avatar', class: "card-img-top" %>
       <%end%>

@@ -1,20 +1,11 @@
-<div class="jumbotron text-right">
-  <h1 class="display-4">Index des évènements</h1>
-  <p class="lead font-weight-bold">Bienvenue sur notre site d'organisation d'évènements locaux.</p>
-  <hr class="my-4">
-  <p class="font-weight-bold">Tu veux créer ton propre évènement ?</p>
-  <p class="lead">
+<%= render "home_banner" %>
+<%= render "multi_columns_element" %>
 
-    <%= link_to "C'est par ici !", new_event_path, class: "btn btn-info btn-lg", role: "button"%>
-  </p>
-</div>
-
-  <div class="container">
-    <p class="lead">Ce site a pour but de permettre l'organisation d'évènements près de chez vous et de rassembler des personnes ayant des intérêts communs.
-       Vous trouverez ci-dessous la liste des évènements déjà créés :</p>
-    <div class="list-group">
-      <% @events.order(created_at: :desc).each do |event| %>
-        <%= link_to "#{event.title}", event_path(event.id), class: "list-group-item list-group-item-action" %>
-      <% end %>
-    </div>
+<div class="container">
+  <p class="lead">Voici les évènements déjà créés : cliquez sur l'un d'eux pour en savoir plus !</p>
+  <div class="row">
+    <% @events.order(created_at: :desc).each do |event| %>
+      <%= render partial: "event_list_card", locals: { event: event } %>
+    <% end %>
   </div>
+</div>
