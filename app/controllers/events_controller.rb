@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  include EventsHelper
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Events", :events_path
 
   before_action :authenticate_user!, only: [:new, :create]
   before_action :is_user_admin?, only: [:edit, :update]
@@ -11,6 +12,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendance = Attendance.where(event_id: @event.id).paid
+
+    add_breadcrumb @event.title
   end
 
   def new

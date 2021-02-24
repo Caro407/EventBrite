@@ -1,9 +1,9 @@
 <%= render "home_banner" %>
 <%= render "multi_columns_element" %>
 
-<div class="container">
+<div class="container mt-3">
   <p class="lead">Voici les évènements déjà créés : cliquez sur l'un d'eux pour en savoir plus !</p>
-  <div class="row">
+  <div class="row d-flex flex-row justify-content-center">
     <% @events.order(created_at: :desc).each do |event| %>
       <%= render partial: "event_list_card", locals: { event: event } %>
     <% end %>

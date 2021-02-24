@@ -63,3 +63,5 @@ gem "faker"
 gem "dotenv-rails"
 gem "devise"
 gem "stripe"
+
+gem "breadcrumbs_on_rails", "~> 4.0"
