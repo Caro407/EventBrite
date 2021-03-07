@@ -2,7 +2,7 @@
 <%= render "multi_columns_element" %>
 
 <div class="container mt-3">
-  <h2 class="lead text-primary">Voici les évènements déjà créés : cliquez sur l'un d'eux pour en savoir plus !</h2>
+  <h2 class="lead text-secondary">Voici les évènements déjà créés : cliquez sur l'un d'eux pour en savoir plus !</h2>
   <div class="row d-flex flex-row justify-content-center">
     <% @events.order(created_at: :desc).each do |event| %>
       <%= render partial: "event_list_card", locals: { event: event } %>
